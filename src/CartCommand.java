@@ -1,7 +1,5 @@
-public class CartCommand extends CommandStrategy{
+public class CartCommand extends CommandStrategy {
 
-    @Override
-    void execute(VendureConnection vendureConnection, OutputStrategy outputStrategy) {
-
-    }
+  @Override
+  void execute(VendureConnection vendureConnection, OutputStrategy outputStrategy) {}
 }

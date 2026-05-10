@@ -1,12 +1,13 @@
 public class VendureConnection {
-    private String url;
+  private String url;
 
-    public VendureConnection(){}
+  public VendureConnection() {}
 
-    public void resolveUrl(String s){
-    }
+  public void resolveUrl(String s) {}
 
-    public String getUrl(){ return url;}
+  public String getUrl() {
+    return url;
+  }
 
-    public void connect(){}
+  public void connect() {}
 }

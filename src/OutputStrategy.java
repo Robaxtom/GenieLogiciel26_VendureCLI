@@ -1,5 +1,5 @@
 public abstract class OutputStrategy {
-    private VendureConnection vendureConnection;
+  private VendureConnection vendureConnection;
 
-    abstract void display();
+  abstract void display();
 }

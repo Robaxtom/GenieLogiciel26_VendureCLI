@@ -1,0 +1,33 @@
+name: CI Vendure
+
+on: push
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copy code
+        uses: actions/checkout@v4
+
+      - name: Check Java formatting
+        uses: axel-op/googlejavaformat-action@v3
+        with:
+            args: "--check"
+
+      - name: Java installer
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Compiling .java
+        run: |
+          mkdir -p out
+          wget -O junit-standalone.jar https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
+          javac -cp "junit-standalone.jar:." -d out $(find src -name "*.java")
+
+      - name: Execute JUnit
+        run: |
+          wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
+          java -jar junit-platform-console-standalone-1.10.0.jar -cp "lib/*:out" --scan-class-path

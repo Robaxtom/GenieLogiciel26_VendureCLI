@@ -1,6 +1,4 @@
-public class JSONOutput extends OutputStrategy{
-    @Override
-    void display() {
-
-    }
+public class JSONOutput extends OutputStrategy {
+  @Override
+  void display() {}
 }

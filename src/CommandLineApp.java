@@ -52,7 +52,7 @@ public class CommandLineApp implements Runnable {
     OutputStrategy outputStrategy = getOutputStrategy(format);
     VendureConnection connection = new VendureConnection();
     connection.resolveUrl(url);
-    System.out.println("--- Connecting to " + url + " ---");
+    System.out.println("--- Connecting to " + connection.getUrl() + " ---");
     if (connection.getUrl() == null) {
       System.out.println("!Connexion failed!");
       return;

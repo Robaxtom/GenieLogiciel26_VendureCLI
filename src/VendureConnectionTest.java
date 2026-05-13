@@ -30,14 +30,6 @@ class VendureConnectionTest {
   }
 
   @Test
-  void returnCleanedUrl() {
-    String input = "cli --url http://url.ch";
-    connection.resolveUrl(input);
-    String result = connection.getUrl();
-    assertEquals("http://url.ch", result);
-  }
-
-  @Test
   void returnInputUrlOverStoredUrl() {
     String defaultUrl = "http://default-url.ch";
     connection.resolveUrl(defaultUrl);

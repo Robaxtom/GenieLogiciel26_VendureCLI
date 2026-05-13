@@ -15,16 +15,52 @@ public class CommandLineApp implements Runnable {
   @CommandLine.Parameters(index = "0")
   private String commandName;
 
-  public static void main(String[] args) {}
+  public static void main(String[] args) {
+    new CommandLine(new CommandLineApp()).execute(args);
+  }
 
   public CommandStrategy getCommandStrategy(String s) {
-    return null;
+    if (s == null) {
+      return null;
+    }
+
+    return switch (s.toLowerCase()) {
+      case "list" -> new ListCommand();
+      case "cart" -> new CartCommand();
+      default -> {
+        System.out.println("Unknown command: " + s);
+        yield null;
+      }
+    };
   }
 
   public OutputStrategy getOutputStrategy(String s) {
-    return null;
+    if (s == null) {
+      return null;
+    }
+
+    return switch (s.toLowerCase()) {
+      case "table" -> new TableOutput();
+      case "json" -> new JSONOutput();
+      default -> new TableOutput();
+    };
   }
 
   @Override
-  public void run() {}
+  public void run() {
+    this.commandStrategy = getCommandStrategy(commandName);
+    OutputStrategy outputStrategy = getOutputStrategy(format);
+    VendureConnection connection = new VendureConnection();
+    connection.resolveUrl(url);
+    System.out.println("--- Connecting to " + url + " ---");
+    if (connection.getUrl() == null) {
+      System.out.println("!Connexion failed!");
+      return;
+    }
+    System.out.println(
+        "--- Command : " + commandName + " ---\n" + "--- Format : " + format + " ---");
+    if (commandStrategy != null) {
+      commandStrategy.execute(connection, outputStrategy);
+    }
+  }
 }

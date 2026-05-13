@@ -1,4 +1,9 @@
+import java.util.List;
+
 public class JSONOutput extends OutputStrategy {
-  @Override
-  void display() {}
+
+    @Override
+    void display(List<?> items) {
+
+    }
 }

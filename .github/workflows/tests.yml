@@ -10,12 +10,18 @@ jobs:
       - name: Copy code
         uses: actions/checkout@v4
 
+      - name: Setup Java 21 for formatting
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
       - name: Check Java formatting
         uses: axel-op/googlejavaformat-action@v3
         with:
-            args: "--dry-run --set-exit-if-changed"
+          args: "--dry-run --set-exit-if-changed"
 
-      - name: Java installer
+      - name: Setup Java 17 for build
         uses: actions/setup-java@v4
         with:
           java-version: '17'

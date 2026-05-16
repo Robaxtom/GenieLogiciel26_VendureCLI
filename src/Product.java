@@ -1,27 +1,36 @@
-public class Product implements Tabulatable{
-    private String name;
-    private int id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-    public Product(int id, String name){
-        this.name = name;
-        this.id = id;
-    }
+public class Product implements Tabulatable {
+  private String name;
+  private int id;
 
-    @Override
-    public String toString(){
-        return "Product [id= " + id + " | name = " + name + "]";
-    }
+  public Product(int id, String name) {
+    this.name = name;
+    this.id = id;
+  }
 
-    public String getName(){return name;}
-    public int getId() {return id;}
+  @Override
+  public String toString() {
+    return "Product [id= " + id + " | name = " + name + "]";
+  }
 
-    @Override
-    public String[] getHeaders() {
-        return new String[]{"ID", "NAME"};
-    }
+  public String getName() {
+    return name;
+  }
 
-    @Override
-    public String[] getValues() {
-        return new String[]{String.valueOf(id), name};
-    }
+  public int getId() {
+    return id;
+  }
+
+  @Override
+  @JsonIgnore
+  public String[] getHeaders() {
+    return new String[] {"ID", "NAME"};
+  }
+
+  @Override
+  @JsonIgnore
+  public String[] getValues() {
+    return new String[] {String.valueOf(id), name};
+  }
 }

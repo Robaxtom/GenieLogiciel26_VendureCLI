@@ -21,12 +21,11 @@ class VendureConnectionTest {
 
   @Test
   void returnDefaultWhenNoneProvided() {
-    String defaultUrl = "http://default-url.ch";
-    connection.resolveUrl(defaultUrl);
+    // Default URL is set to http://localhost:3000/shop-api
     String input = null;
     connection.resolveUrl(input);
     String result = connection.getUrl();
-    assertEquals("http://default-url.ch", connection.getUrl());
+    assertEquals("http://localhost:3000/shop-api", result);
   }
 
   @Test
@@ -36,6 +35,6 @@ class VendureConnectionTest {
     String input = "http://new-url.ch";
     connection.resolveUrl(input);
     String result = connection.getUrl();
-    assertEquals("http://new-url.ch", connection.getUrl());
+    assertEquals("http://new-url.ch", result);
   }
 }

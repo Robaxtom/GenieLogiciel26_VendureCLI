@@ -9,6 +9,7 @@ public class ListCommand extends CommandStrategy {
         List<Product> products = service.execute(query, vendureConnection);
         if (products == null || products.isEmpty()){
       System.out.println("No products were found!");
+      return;
         }
         outputStrategy.display(products);
   }

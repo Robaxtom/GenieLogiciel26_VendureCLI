@@ -2,7 +2,6 @@ import picocli.CommandLine;
 
 @CommandLine.Command(name = "vendure-cli", mixinStandardHelpOptions = true)
 public class CommandLineApp implements Runnable {
-  private CommandStrategy commandStrategy;
 
   @CommandLine.Option(names = {"-u", "--url"})
   private String url;
@@ -26,7 +25,7 @@ public class CommandLineApp implements Runnable {
 
     return switch (s.toLowerCase()) {
       case "list" -> new ListCommand();
-      case "cart" -> new CartCommand();
+      case "listvariants" -> new ListVariantsCommand();
       default -> {
         System.out.println("Unknown command: " + s);
         yield null;
@@ -48,7 +47,7 @@ public class CommandLineApp implements Runnable {
 
   @Override
   public void run() {
-    this.commandStrategy = getCommandStrategy(commandName);
+    CommandStrategy commandStrategy = getCommandStrategy(commandName);
     OutputStrategy outputStrategy = getOutputStrategy(format);
     VendureConnection connection = new VendureConnection();
     connection.resolveUrl(url);

@@ -12,22 +12,22 @@ class CommandLineAppTest {
   }
 
   @Test
-  void instantiateCartCommand() {
-    String input = "cart";
+  void instantiateListVariantsCommand() {
+    String input = "listvariants";
     CommandStrategy commandStrategy = commandLineApp.getCommandStrategy(input);
-    assertInstanceOf(CartCommand.class, commandStrategy);
+    assertInstanceOf(ListVariantsCommand.class, commandStrategy);
   }
 
   @Test
   void instantiateJSONOutput() {
-    String input = "--format json";
+    String input = "json";
     OutputStrategy outputStrategy = commandLineApp.getOutputStrategy(input);
     assertInstanceOf(JSONOutput.class, outputStrategy);
   }
 
   @Test
   void instantiateTableOutput() {
-    String input = "--format table";
+    String input = "table";
     OutputStrategy outputStrategy = commandLineApp.getOutputStrategy(input);
     assertInstanceOf(TableOutput.class, outputStrategy);
   }

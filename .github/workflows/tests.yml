@@ -13,7 +13,7 @@ jobs:
       - name: Check Java formatting
         uses: axel-op/googlejavaformat-action@v3
         with:
-            args: "--check"
+            args: "--dry-run --set-exit-if-changed"
 
       - name: Java installer
         uses: actions/setup-java@v4

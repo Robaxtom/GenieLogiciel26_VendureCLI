@@ -7,18 +7,19 @@ import java.util.List;
 public class GetVariantsListQuery implements GraphQLQuery<List<Variant>> {
   @Override
   public String getQueryPayload() {
-    return "query {\n"
-        + "  products{\n"
-        + "  items{\n"
-        + "    variants{\n"
-        + "      id\n"
-        + "      name\n"
-        + "      price\n"
-        + "      sku\n"
-        + "       }\n"
-        + "     }\n"
-        + "  }\n"
-        + "}";
+    return """
+            query {
+              products{
+              items{
+                variants{
+                  id
+                  name
+                  price
+                  sku
+                   }
+                 }
+              }
+            }""";
   }
 
   @Override

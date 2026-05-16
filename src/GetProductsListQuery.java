@@ -7,14 +7,15 @@ import java.util.List;
 public class GetProductsListQuery implements GraphQLQuery<List<Product>> {
   @Override
   public String getQueryPayload() {
-    return "query {\n"
-        + "  products{\n"
-        + "    items{\n"
-        + "      id\n"
-        + "      name\n"
-        + "    }\n"
-        + "  }\n"
-        + "}";
+    return """
+            query {
+              products{
+                items{
+                  id
+                  name
+                }
+              }
+            }""";
   }
 
   @Override

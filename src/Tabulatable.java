@@ -1,4 +1,5 @@
 public interface Tabulatable {
-    String[] getHeaders();
-    String[] getValues();
+  String[] getHeaders();
+
+  String[] getValues();
 }
